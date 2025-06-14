@@ -253,7 +253,9 @@
                 <a href="#about" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">About</a>
                 <a href="#services" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">Services</a>
                 <a href="#process" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">Process</a>
+                <a href="plan.html" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">料金プラン</a>
                 <a href="#company" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">Company</a>
+                <a href="#recruit" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">採用情報</a>
                 <a href="#contact" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">Contact</a>
             </div>
             <button id="menu-btn" class="md:hidden focus:outline-none">
@@ -506,16 +508,11 @@
     <!-- Stats Section -->
     <section class="py-20 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8 text-center">
+            <div class="grid md:grid-cols-2 gap-8 text-center">
                 <div class="fade-in">
                     <div class="stats-counter mb-4" data-target="50">0</div>
                     <div class="text-purple-100 font-medium text-lg">プロジェクト実績</div>
                     <div class="text-sm text-purple-200 mt-2">2020年の創業以来</div>
-                </div>
-                <div class="fade-in">
-                    <div class="stats-counter mb-4" data-target="98">0</div>
-                    <div class="text-purple-100 font-medium text-lg">顧客満足度</div>
-                    <div class="text-sm text-purple-200 mt-2">継続的な改善を実現</div>
                 </div>
                 <div class="fade-in">
                     <div class="stats-counter mb-4" data-target="24">0</div>
@@ -621,7 +618,7 @@
                 <div class="fade-in">
                     <div class="contact-form">
                         <h3 class="text-2xl font-semibold mb-6 text-gray-900">お問い合わせフォーム</h3>
-                        <form class="space-y-6">
+                        <form action="mailto:info@techbrace.co.jp" method="POST" enctype="text/plain" class="space-y-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">お名前</label>
                                 <input type="text" class="form-input" required>
@@ -812,11 +809,6 @@
             });
         });
 
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('お問い合わせありがとうございます。後日担当者よりご連絡いたします。');
-        });
 
         // Header background change on scroll
         window.addEventListener('scroll', () => {
