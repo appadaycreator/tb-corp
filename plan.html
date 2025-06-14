@@ -31,10 +31,17 @@
                 <a href="plan.html" class="text-gray-900 font-light border-b border-gray-900">料金プラン</a>
                 <a href="index.html#contact" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Contact</a>
             </div>
-            <button class="md:hidden">
+            <button id="menu-toggle" class="md:hidden">
                 <i class="fas fa-bars text-gray-900"></i>
             </button>
         </nav>
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-white flex flex-col items-center justify-center space-y-8 hidden">
+            <a href="index.html#about" class="text-gray-600 hover:text-gray-900 transition-colors font-light">About</a>
+            <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Services</a>
+            <a href="index.html#company" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Company</a>
+            <a href="plan.html" class="text-gray-900 font-light">料金プラン</a>
+            <a href="index.html#contact" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Contact</a>
+        </div>
     </header>
 
     <main class="pt-32 pb-20 max-w-5xl mx-auto px-6">
@@ -82,9 +89,17 @@
     </footer>
 
     <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
-                navigator.serviceWorker.register("/sw.js");
+                navigator.serviceWorker.register("sw.js");
             });
         }
     </script>
