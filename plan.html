@@ -24,14 +24,14 @@
                     <span class="text-xl font-light">Tech&Brace</span>
                 </a>
             </div>
-            <div class="hidden md:flex space-x-8">
+            <div id="nav-menu" class="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 absolute md:static top-16 right-6 bg-white md:bg-transparent border md:border-0 border-gray-200 rounded-lg p-6 md:p-0 shadow-md md:shadow-none">
                 <a href="index.html#about" class="text-gray-600 hover:text-gray-900 transition-colors font-light">About</a>
                 <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Services</a>
                 <a href="index.html#company" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Company</a>
                 <a href="plan.html" class="text-gray-900 font-light border-b border-gray-900">料金プラン</a>
                 <a href="index.html#contact" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Contact</a>
             </div>
-            <button class="md:hidden">
+            <button id="menu-btn" class="md:hidden focus:outline-none">
                 <i class="fas fa-bars text-gray-900"></i>
             </button>
         </nav>
@@ -85,6 +85,25 @@
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
                 navigator.serviceWorker.register("/sw.js");
+            });
+        }
+
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                });
             });
         }
     </script>
