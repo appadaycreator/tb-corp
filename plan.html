@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>料金プラン | 株式会社Tech&Brace</title>
+    <meta name="description" content="Web制作やシステム開発の参考料金プランを掲載しています。">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://cdn1.genspark.ai/user-upload-image/22_generated/47f23fdb-659a-4d4d-80ec-cf79020895ed">
+    <style>
+        * {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/22_generated/47f23fdb-659a-4d4d-80ec-cf79020895ed" alt="Tech&Brace" class="h-8 w-8 mr-3">
+                    <span class="text-xl font-light">Tech&Brace</span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="text-gray-600 hover:text-gray-900 transition-colors font-light">About</a>
+                <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Services</a>
+                <a href="index.html#company" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Company</a>
+                <a href="plan.html" class="text-gray-900 font-light border-b border-gray-900">料金プラン</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Contact</a>
+            </div>
+            <button class="md:hidden">
+                <i class="fas fa-bars text-gray-900"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-20 max-w-5xl mx-auto px-6">
+        <h1 class="text-4xl md:text-6xl font-light mb-12 text-center">料金プラン</h1>
+        <p class="text-center text-gray-600 mb-16">下記は参考価格となります。詳細はお見積もりいたしますのでお気軽にご相談ください。</p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="border rounded-lg p-6 shadow-sm">
+                <h2 class="text-2xl font-medium mb-4">小規模サイト向け</h2>
+                <p class="text-3xl font-light mb-4">¥300,000〜</p>
+                <ul class="list-disc pl-5 mb-4 text-gray-700 space-y-1">
+                    <li>トップページ含む5ページまで</li>
+                    <li>スマホ対応デザイン</li>
+                    <li>簡易お問い合わせフォーム</li>
+                </ul>
+                <p class="text-sm text-gray-500">公開後1カ月のメールサポート付き</p>
+            </div>
+            <div class="border rounded-lg p-6 shadow-sm">
+                <h2 class="text-2xl font-medium mb-4">ECサイト構築</h2>
+                <p class="text-3xl font-light mb-4">¥800,000〜</p>
+                <ul class="list-disc pl-5 mb-4 text-gray-700 space-y-1">
+                    <li>商品登録・決済機能</li>
+                    <li>在庫管理システム</li>
+                    <li>運営マニュアル作成</li>
+                </ul>
+                <p class="text-sm text-gray-500">公開後3カ月のメール・電話サポート</p>
+            </div>
+            <div class="border rounded-lg p-6 shadow-sm">
+                <h2 class="text-2xl font-medium mb-4">業務システム開発</h2>
+                <p class="text-3xl font-light mb-4">¥1,500,000〜</p>
+                <ul class="list-disc pl-5 mb-4 text-gray-700 space-y-1">
+                    <li>要件定義から運用保守まで対応</li>
+                    <li>クラウド環境構築</li>
+                    <li>ユーザートレーニング実施</li>
+                </ul>
+                <p class="text-sm text-gray-500">半年間の運用サポート契約が可能</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm">&copy; 2024 株式会社Tech&Brace. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js");
+            });
+        }
+    </script>
+</body>
+</html>
