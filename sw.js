@@ -2,7 +2,9 @@ const CACHE_NAME = 'tb-corp-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/plan.html'
+  '/plan.html',
+  '/web.html',
+  '/system.html'
 ];
 
 self.addEventListener('install', event => {
