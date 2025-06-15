@@ -22,7 +22,7 @@
                     <span class="text-xl font-light">Tech&Brace</span>
                 </a>
             </div>
-            <div id="nav-menu" class="hidden fixed top-0 right-0 h-full w-64 bg-white bg-opacity-100 border-l border-gray-200 p-6 shadow-md flex flex-col space-y-4 z-50 md:static md:flex md:flex-row md:h-auto md:w-auto md:space-y-0 md:space-x-8 md:bg-transparent md:border-0 md:shadow-none md:p-0">
+            <div id="nav-menu" class="hidden fixed top-0 right-0 h-full w-64 bg-white bg-opacity-100 border-l border-gray-200 p-6 shadow-md flex flex-col space-y-4 z-50 transform translate-x-full transition-transform duration-300 md:static md:flex md:flex-row md:h-auto md:w-auto md:space-y-0 md:space-x-8 md:bg-transparent md:border-0 md:shadow-none md:p-0 md:translate-x-0">
                 <a href="index.html#about" class="text-gray-600 hover:text-gray-900 transition-colors font-light">About</a>
                 <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Services</a>
                 <a href="index.html#company" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Company</a>
@@ -38,6 +38,7 @@
             </button>
         </nav>
     </header>
+    <div id="nav-overlay" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
     <main class="pt-32 pb-20 max-w-5xl mx-auto px-6">
         <h1 class="text-4xl md:text-6xl font-light mb-12 text-center">Web制作</h1>
@@ -78,20 +79,33 @@
 
         const menuBtn = document.getElementById('menu-btn');
         const navMenu = document.getElementById('nav-menu');
-        if (menuBtn && navMenu) {
+        const navOverlay = document.getElementById('nav-overlay');
+        if (menuBtn && navMenu && navOverlay) {
+            const icon = menuBtn.querySelector('i');
+            const openMenu = () => {
+                navMenu.classList.remove('hidden');
+                navOverlay.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                setTimeout(() => navMenu.classList.remove('translate-x-full'), 10);
+            };
+            const closeMenu = () => {
+                navMenu.classList.add('translate-x-full');
+                navOverlay.classList.add('hidden');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+                setTimeout(() => navMenu.classList.add('hidden'), 300);
+            };
             menuBtn.addEventListener('click', () => {
-                navMenu.classList.toggle('hidden');
-                const icon = menuBtn.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
+                if (navMenu.classList.contains('hidden')) {
+                    openMenu();
+                } else {
+                    closeMenu();
+                }
             });
+            navOverlay.addEventListener('click', closeMenu);
             navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.add('hidden');
-                    const icon = menuBtn.querySelector('i');
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                });
+                link.addEventListener('click', closeMenu);
             });
         }
     </script>
