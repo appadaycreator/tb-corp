@@ -171,6 +171,13 @@
             white-space: nowrap;
             animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
         }
+
+        .typing-cursor {
+            border-right: 3px solid var(--primary-color);
+            animation: blink 0.75s step-end infinite;
+            white-space: pre-wrap;
+            overflow: hidden;
+        }
         
         @keyframes typing {
             from { width: 0; }
@@ -267,10 +274,7 @@
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-white to-pink-50 relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
-            <div class="hero-text text-gray-900 mb-8">
-                <div class="mb-4">Beautiful Code,</div>
-                <div class="mb-4">Beautiful <span class="gradient-text">Solutions</span></div>
-            </div>
+            <div id="hero-typing" class="hero-text text-gray-900 mb-8 typing-cursor"></div>
             <div class="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
                 私たちは技術とデザインの力で、<br class="hidden md:block">
                 お客様のビジネスを次のレベルへと導きます
@@ -488,17 +492,7 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <div class="mt-8 font-code text-sm text-gray-700">
-                            <div class="mb-2"><span class="text-purple-600">// プロジェクト開始</span></div>
-                            <div class="mb-2"><span class="text-blue-600">function</span> <span class="text-yellow-600">startProject</span>() {</div>
-                            <div class="ml-4 mb-2"><span class="text-green-600">analyze</span>(requirements);</div>
-                            <div class="ml-4 mb-2"><span class="text-green-600">design</span>(userExperience);</div>
-                            <div class="ml-4 mb-2"><span class="text-green-600">develop</span>(cleanCode);</div>
-                            <div class="ml-4 mb-2"><span class="text-green-600">test</span>(quality);</div>
-                            <div class="ml-4 mb-2"><span class="text-blue-600">return</span> <span class="text-green-600">"success"</span>;</div>
-                            <div class="mb-4">}</div>
-                            <div class="text-purple-600">// 継続的なサポートを提供</div>
-                        </div>
+                        <pre id="code-typing" class="mt-8 font-code text-sm text-gray-700 typing-cursor"></pre>
                     </div>
                 </div>
             </div>
@@ -857,6 +851,69 @@
                     icon.classList.remove('fa-times');
                 });
             });
+        }
+
+        // Typing effect for hero text
+        const heroTexts = ['Beautiful Code,', 'Beautiful Solutions'];
+        const heroEl = document.getElementById('hero-typing');
+        function typeHeroText(index = 0, charIndex = 0) {
+            const text = heroTexts[index];
+            heroEl.classList.toggle('gradient-text', index === 1);
+            heroEl.innerHTML = text.slice(0, charIndex);
+            if (charIndex < text.length) {
+                setTimeout(() => typeHeroText(index, charIndex + 1), 120);
+            } else {
+                setTimeout(() => eraseHeroText(index), 1500);
+            }
+        }
+        function eraseHeroText(index, charIndex = heroTexts[index].length) {
+            const text = heroTexts[index];
+            heroEl.innerHTML = text.slice(0, charIndex);
+            if (charIndex > 0) {
+                setTimeout(() => eraseHeroText(index, charIndex - 1), 60);
+            } else {
+                const next = (index + 1) % heroTexts.length;
+                setTimeout(() => typeHeroText(next, 0), 300);
+            }
+        }
+        if (heroEl) {
+            typeHeroText();
+        }
+
+        // Typing effect for code block
+        const codeLines = [
+            '// プロジェクト開始',
+            'function startProject() {',
+            '    analyze(requirements);',
+            '    design(userExperience);',
+            '    develop(cleanCode);',
+            '    test(quality);',
+            '    return "success";',
+            '}',
+            '// 継続的なサポートを提供'
+        ];
+        const codeEl = document.getElementById('code-typing');
+        function typeCodeLine(lineIndex = 0, charIndex = 0) {
+            if (!codeEl) return;
+            const line = codeLines[lineIndex];
+            codeEl.textContent += line.charAt(charIndex);
+            if (charIndex < line.length - 1) {
+                setTimeout(() => typeCodeLine(lineIndex, charIndex + 1), 60);
+            } else {
+                codeEl.textContent += '\n';
+                if (lineIndex + 1 < codeLines.length) {
+                    setTimeout(() => typeCodeLine(lineIndex + 1, 0), 200);
+                } else {
+                    setTimeout(() => {
+                        codeEl.textContent = '';
+                        typeCodeLine(0, 0);
+                    }, 3000);
+                }
+            }
+        }
+        if (codeEl) {
+            codeEl.textContent = '';
+            typeCodeLine();
         }
     </script>
 </body>
