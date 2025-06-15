@@ -256,7 +256,7 @@
                 <img src="https://cdn1.genspark.ai/user-upload-image/22_generated/47f23fdb-659a-4d4d-80ec-cf79020895ed" alt="Tech&Brace" class="h-8 w-8 mr-3">
                 <span class="text-xl font-semibold text-gray-900">Tech&Brace</span>
             </div>
-            <div id="nav-menu" class="hidden fixed top-0 right-0 h-full w-64 bg-white bg-opacity-100 border-l border-gray-200 p-6 shadow-md flex flex-col space-y-4 z-50 md:static md:flex md:flex-row md:h-auto md:w-auto md:space-y-0 md:space-x-8 md:bg-transparent md:border-0 md:shadow-none md:p-0">
+            <div id="nav-menu" class="hidden fixed top-0 right-0 h-full w-64 bg-white bg-opacity-100 border-l border-gray-200 p-6 shadow-md flex flex-col space-y-4 z-50 transform translate-x-full transition-transform duration-300 md:static md:flex md:flex-row md:h-auto md:w-auto md:space-y-0 md:space-x-8 md:bg-transparent md:border-0 md:shadow-none md:p-0 md:translate-x-0">
                 <a href="#about" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">About</a>
                 <a href="#services" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">Services</a>
                 <a href="#process" class="text-gray-600 hover:text-purple-600 transition-colors font-medium">Process</a>
@@ -270,6 +270,7 @@
             </button>
         </nav>
     </header>
+    <div id="nav-overlay" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-white to-pink-50 relative overflow-hidden">
@@ -833,23 +834,36 @@
             }
         });
 
-        // Hamburger menu
+        // Hamburger menu with overlay and slide animation
         const menuBtn = document.getElementById('menu-btn');
         const navMenu = document.getElementById('nav-menu');
-        if (menuBtn && navMenu) {
+        const navOverlay = document.getElementById('nav-overlay');
+        if (menuBtn && navMenu && navOverlay) {
+            const icon = menuBtn.querySelector('i');
+            const openMenu = () => {
+                navMenu.classList.remove('hidden');
+                navOverlay.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                setTimeout(() => navMenu.classList.remove('translate-x-full'), 10);
+            };
+            const closeMenu = () => {
+                navMenu.classList.add('translate-x-full');
+                navOverlay.classList.add('hidden');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+                setTimeout(() => navMenu.classList.add('hidden'), 300);
+            };
             menuBtn.addEventListener('click', () => {
-                navMenu.classList.toggle('hidden');
-                const icon = menuBtn.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
+                if (navMenu.classList.contains('hidden')) {
+                    openMenu();
+                } else {
+                    closeMenu();
+                }
             });
+            navOverlay.addEventListener('click', closeMenu);
             navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.add('hidden');
-                    const icon = menuBtn.querySelector('i');
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                });
+                link.addEventListener('click', closeMenu);
             });
         }
 
