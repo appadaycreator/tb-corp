@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社概要 | 株式会社Tech&Brace</title>
+    <meta name="description" content="株式会社Tech&Braceの会社概要をご紹介します。">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://cdn1.genspark.ai/user-upload-image/22_generated/47f23fdb-659a-4d4d-80ec-cf79020895ed">
+    <style>
+        * { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/22_generated/47f23fdb-659a-4d4d-80ec-cf79020895ed" alt="Tech&Brace" class="h-8 w-8 mr-3">
+                    <span class="text-xl font-light">Tech&Brace</span>
+                </a>
+            </div>
+            <div id="nav-menu" class="hidden fixed top-0 right-0 h-full w-64 bg-white border-l border-gray-200 p-6 shadow-md flex flex-col space-y-4 z-50 md:static md:flex md:flex-row md:h-auto md:w-auto md:space-y-0 md:space-x-8 md:bg-transparent md:border-0 md:shadow-none md:p-0">
+                <a href="index.html#about" class="text-gray-600 hover:text-gray-900 transition-colors font-light">About</a>
+                <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Services</a>
+                <a href="company.html" class="text-gray-900 font-light border-b border-gray-900">Company</a>
+                <a href="plan.html" class="text-gray-600 hover:text-gray-900 transition-colors font-light">料金プラン</a>
+                <a href="index.html#recruit" class="text-gray-600 hover:text-gray-900 transition-colors font-light">採用情報</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-gray-900 transition-colors font-light">Contact</a>
+            </div>
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-gray-900"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-20 max-w-3xl mx-auto px-6">
+        <h1 class="text-4xl md:text-6xl font-light mb-12 text-center">会社概要</h1>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <dl class="space-y-4">
+                <div class="flex">
+                    <dt class="w-32 text-sm font-medium text-gray-500">会社名</dt>
+                    <dd class="text-gray-900">株式会社Tech&Brace</dd>
+                </div>
+                <div class="flex">
+                    <dt class="w-32 text-sm font-medium text-gray-500">設立</dt>
+                    <dd class="text-gray-900">2020年4月</dd>
+                </div>
+                <div class="flex">
+                    <dt class="w-32 text-sm font-medium text-gray-500">所在地</dt>
+                    <dd class="text-gray-900">
+                        〒101-0047<br>
+                        東京都千代田区内神田2-5-5<br>
+                        神田金物ビル3F
+                    </dd>
+                </div>
+                <div class="flex">
+                    <dt class="w-32 text-sm font-medium text-gray-500">事業内容</dt>
+                    <dd class="text-gray-900">Web制作、システム開発、DXコンサルティング</dd>
+                </div>
+            </dl>
+        </div>
+    </main>
+
+    <footer class="bg-black text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm">&copy; 2024 株式会社Tech&Brace. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js");
+            });
+        }
+
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
